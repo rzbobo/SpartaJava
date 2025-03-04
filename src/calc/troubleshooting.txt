@@ -1,0 +1,53 @@
+trouble ->
+        int num1 = sc.nextInt();
+        String tool = sc.nextline(); // trouble -> sc.nextline()
+        int num2 = sc.nextInt();
+        초기에 코드를 이렇게 구성했었는데
+        이와 같이 구성 시, nextInt()는 숫자만 읽고 엔터('n)를 입력 버퍼에 남기는데
+        문제는 sc.nextline();이 해당 부분을 읽고 넘어가버리기 때문에 tool 변수에 기호가 아닌 빈 문자열이 들어가게 된다.
+        따라서 num2 값에 입력이 잘못들어가게 되면서 오류가 발생하는 구조
+        해결방법으로는
+        1. sc.nextline();을 사용할거라면 sc.nextInt();
+        다음 줄에 버퍼를 한번 비우는 작업을 해 주어야 한다.
+        ex)
+        int num1 = sc.nextInt();
+        sc.nextLine(); // 버퍼 비우기
+        String tool = sc.nextline();
+        int num2 = sc.nextInt();
+
+       2. 해당 코드가 이번 케이스처럼 문자 단 하나만 받아 오는 경우면
+       sc.next();를 사용하면 해결가능.
+       sc.next()는 공백을 기준으로 한 단어만 읽으므로 버퍼 문제 없음.
+       int num1 = sc.nextInt();
+       String tool = sc.next(); // 한 단어이므로 sc.next() 사용
+       int num2 = sc.nextInt();
+
+나눗셈 시, 두 번째 숫자에 0을 입력하면 오류가 나오는데 이를 어떻게 해결할 것인가.
+궁금점 - case 문안에 if를 추가할 수 있나?
+-> 가능하다
+
+ case "/" -> {
+                if (num2 == 0) {
+                    System.out.println("0으로는 나눌 수 없습니다."); // 0 나눗셈 오류 방지
+                } else {
+                    System.out.println("두 숫자의 나눗셈 결과 : " + (double)(num1 / num2));
+                }
+            }
+
+            다음과 같은 방식으로 구성 완료
+
+키워드 "exit"을 입력하기 전 까지는 무한 루프형식으로 진행시키기.
+-> while(keyword != ("exit")) 형식으로 구성하면 될 것 같음.
+-> 계산을 위해 입력받는 print문에서 해결하고 싶어 키워드를 연산 값 중 하나에 입력받아 진행해보려 시도.
+-> 키워드는 num1값으로 설정하고 exit인지 여부를 판단하는 게 좋아보임.
+-> while(num1 != ("exit"))와 같이 코드 구성 하는 게 좋다고 생각.
+-> 그런데 exit은 문자열인데 int형이 num1에서 판단하는 것이 맞는지 의문
+-> 형변환 등 고려해야 할 부분이 너무 많아 복잡해질 것 같음.
+-> 그냥 계산 결과 이후에 print문을 넣어 keyword를 따로 받는 것으로 결정.
+-> 코드 구현 후 동작해봤으나, keyword값을 제대로 받지 못하고 실패
+-> 이전 int num2 = sc.nextInt(); 이후에 추가로 입력을 받는 것이고, 한 문자가 아니기에 버퍼를 비우는 과정이 필요함
+-> 버퍼 비우기 과정 생성 후, 정상 작동 완료.
+-> level1 마무리.
+
+* 문자열 비교이기 때문에 !=이 아니라 !keyword.equals("exit")을 고려했어야 함!
+  (프로그램이 돌아가긴 하지만 이 방식이 더 권장되는 방식임)

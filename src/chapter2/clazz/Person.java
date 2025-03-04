@@ -7,7 +7,6 @@ public class Person {
     int age;
     String address;
 
-
     // 2. 생성자 - 조립설명서
     // 기본생성자 : Person() {}
     // 생성자의 특징 :
