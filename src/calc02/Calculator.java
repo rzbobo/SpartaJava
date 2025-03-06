@@ -37,10 +37,6 @@ public class Calculator {
     // 연산하기
     // setter로 입력값을 가져오기 때문에 매개변수를 메서드에서 직접 받지 않는다.
     public void calculate() {
-        // switch문 작성 시, ':' 작성 방식과 '->' 작성 방식이 존재하는데,
-        // '->' 작성 방식은 여러 줄일 경우 {} 필요
-        // jdk 12 이상에서 지원하는 '->' 작성방식을 사용하면 break를 생략해도 된다.
-        // 반면에 ':' 방식은 jdk11 이하 버전에서 사용하면 되고 break를 사용해야 다음과정으로 안 넘어간다.
 
         // 연산 결과를 두 개로 구분을 해야함
         // 1) 연산 값 -> opResult
@@ -49,6 +45,11 @@ public class Calculator {
         // 어차피 연산 값은 연산 메서드에서만 필요하니 연산 메서드 자체에서만 선언,
         // 이후 문자열에 합쳐서 2) result 데이터로 저장
         Number opResult;
+
+        // switch문 작성 시, ':' 작성 방식과 '->' 작성 방식이 존재하는데,
+        // '->' 작성 방식은 여러 줄일 경우 {} 필요
+        // jdk 12 이상에서 지원하는 '->' 작성방식을 사용하면 break를 생략해도 된다.
+        // 반면에 ':' 방식은 jdk11 이하 버전에서 사용하면 되고 break를 사용해야 다음과정으로 안 넘어간다.
         switch (operator) {
             case '+' -> opResult = num1 + num2;
             case '-' -> opResult = num1 - num2;
@@ -66,28 +67,10 @@ public class Calculator {
                 return;
             }
         }
-
         String history = num1 + " " + operator + " " + num2 + " = " + opResult;
         result.add(history);
-        System.out.println("연산 결과 : " + history);
     }
 
-
-    // 결과 값 저장하기
-    public ArrayList<String> getResult() {
-        return result;
-    }
-
-    public void viewResult() {
-        if (!result.isEmpty()) {
-            System.out.println("연산 결과 조회 : ");
-            for (int i = 0; i < result.size(); i++) {
-                System.out.println(result.get(i));
-            }
-        } else {
-            System.out.println("저장된 연산 결과가 없습니다.");
-        }
-    }
 
     // 결과값이 존재할 시, 가장 먼저 저장된 결과값 지우기
     public void removeFirstResult() {
@@ -109,30 +92,24 @@ public class Calculator {
     }
 
 
-
-
     //게터, 세터
 
-
-    public int getNum1() {
-        return num1;
+    // 결과 값 저장하기
+    // 게터 사용하기
+    public ArrayList<String> getResult() {
+        return result;
     }
 
+    // 매개 변수 설정하기
+    // 세터 사용하기
     public void setNum1(int num1) {
-        this.num1 = num1;
-    }
-
-    public int getNum2() {
-        return num2;
+            this.num1 = num1;
     }
 
     public void setNum2(int num2) {
         this.num2 = num2;
     }
 
-    public char getOperator() {
-        return operator;
-    }
 
     public void setOperator(char operator) {
         this.operator = operator;
