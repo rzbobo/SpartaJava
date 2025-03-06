@@ -1,4 +1,4 @@
-package calc;
+package calc01;
 import java.util.*;
 
 public class Calculator {
