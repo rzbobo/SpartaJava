@@ -1,4 +1,4 @@
-package kiosk02;
+package kiosk03;
 
 public class MenuItem {
     String menuName;
@@ -14,11 +14,6 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        if (price == 0) {
-            return menuName + " | "  + text;
-
-        }
         return menuName + " | W " + price + " | " + text;
     }
-
 }

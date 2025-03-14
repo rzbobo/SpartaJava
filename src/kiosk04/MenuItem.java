@@ -1,6 +1,7 @@
-package kiosk02;
+package kiosk04;
 
 public class MenuItem {
+    // 이름, 가격, 설명 필드 선언하여 관리
     String menuName;
     double price;
     String text;
@@ -14,11 +15,6 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        if (price == 0) {
-            return menuName + " | "  + text;
-
-        }
         return menuName + " | W " + price + " | " + text;
     }
-
 }
