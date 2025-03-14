@@ -1,8 +1,7 @@
-package kiosk04;
+package kiosk0405;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Menu {
 
@@ -11,9 +10,23 @@ public class Menu {
     // --필드--
 
     // 카테고리 이름 필드 추가
-    String category;
+    private String category;
     // MenuItem 클래스를 List로 관리
-    List<MenuItem> menuItems;
+    private List<MenuItem> menuItems;
+
+
+    // 게터세터
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
+    }
 
     // --생성자--
     public Menu(String category) {
@@ -42,7 +55,7 @@ public class Menu {
                 System.out.println(i + "." + menuItem);
                 i++;
             }
-            System.out.println("0.종료 | 종료 ");
+            System.out.println("0.뒤로가기 ");
         } else {
             System.out.println("현재 등록된 "+ category + "메뉴가 없습니다.");
             System.out.println(category +"메뉴를 추가해주세요.");

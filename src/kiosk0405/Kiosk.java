@@ -1,14 +1,22 @@
-package kiosk04;
+package kiosk0405;
 
 import java.util.*;
 
 public class Kiosk {
     // 필드
-    List<Menu> menuList;
+    private List<Menu> menuList;
 
     // 생성자
     public Kiosk() {
         this.menuList = new ArrayList<>();  // 생성자
+    }
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
     }
 
     // 메서드
@@ -16,7 +24,7 @@ public class Kiosk {
         System.out.println("[ MAIN MENU ]");
         int i = 1;
         for (Menu menu : menuList) {
-            System.out.println(i + ". " + menu.category);
+            System.out.println(i + ". " + menu.getCategory());
             i++;
         }
         System.out.println("0. 종료 |종료");
@@ -36,7 +44,7 @@ public class Kiosk {
             // List와 Menu 클래스 활용하여 상위 카테고리 메뉴 출력
             showMainMenu();
             // -> 메뉴 클래스의 // 숫자 입력 받기
-            System.out.println("번호를 입력하세요 : ");
+            System.out.print("번호를 입력하세요 : ");
             num1 = sc.nextInt();
 
             if (num1 == 0) {
@@ -47,8 +55,9 @@ public class Kiosk {
             // List<Menu>에 인덱스로 접근하면 Menu만 추출할 수 있겠죠?
             // Menu가 가진 List<MenuItem>을 반복문을 활용하여 햄버거 메뉴 출력
             if (num1 > 0 && num1 <= menuList.size()) { // num1 값을 메뉴 개수보다 적고 0보다 클 경우로 조건 설정
-                Menu selectedMenu = menuList.get(num1 - 1); // 인덱스는 0부터 시작하므로 -1
-                selectedMenu.showDetailMenu(); // 상세 메뉴 출력
+                Menu selectedMenu = menuList.get(num1 - 1); // selectedMenu 선언,
+                // num값이 1부터 시작하게 if문에서 설정했고, 인덱스는 0부터 시작하므로 -1 해주는 걸로 설정
+                selectedMenu.showDetailMenu(); // 메뉴에 만들어둔 상세 메뉴 메서드를 통해 출력
 
                 int num2; // 상세 메뉴에서 받을 숫자 선언
                 System.out.print("메뉴를 선택하세요: ");
